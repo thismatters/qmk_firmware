@@ -56,11 +56,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_ANIMATIONS
 #define RGB_DI_PIN D3
 #define RGBLED_SPLIT { 6, 6 }
+#define RGBLIGHT_LAYERS
 #define EE_HANDS
 #ifdef RGBLIGHT_ENABLE
 #define RGBLED_NUM 12    // Number of LEDs
 #endif
 
+#define TAPPING_TOGGLE 2
 /*
  * Feature disable options
  *  These options are also useful to firmware size reduction.

@@ -127,6 +127,7 @@ const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
 void keyboard_post_init_user(void) {
     // Enable the LED layers
     rgblight_layers = my_rgb_layers;
+    rgblight_sethsv(HSV_BLUE);
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {

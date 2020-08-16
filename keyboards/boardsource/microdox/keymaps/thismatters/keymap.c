@@ -35,14 +35,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = LAYOUT_split_3x5_3(
   LCTL_T(KC_Q),    KC_W,    KC_E,    KC_R,    KC_T,         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,         KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,
-  LSFT_T(KC_Z),    KC_X,    KC_C,    KC_V,    KC_B,         KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
+  LSFT_T(KC_Z),    KC_X,    KC_C,    KC_V,    KC_B,         KC_N,    KC_M,    KC_COMM, KC_DOT,  LSFT_T(KC_SLSH),
                     TT(_LOWER), MO(_MODLEFT), KC_BSPC,         KC_SPC, MO(_MODRIGHT),  TT(_RAISE)
 ),
 
 
 [_LOWER] = LAYOUT_split_3x5_3(
-  KC_ENT, KC_PSLS, KC_PMNS, KC_SCLN, KC_DEL,       KC_B, KC_C, KC_D, KC_E, KC_F,
-  KC_TAB, KC_ASTR, KC_PLUS, KC_PDOT, KC_PEQL,      KC_6, KC_7, KC_8, KC_9, KC_A,
+  KC_ENT, KC_PSLS, KC_PMNS, KC_COLN, KC_DEL,       KC_B, KC_C, KC_D, KC_E, KC_F,
+  KC_PERC, KC_ASTR, KC_PLUS, KC_PDOT, KC_PEQL,      KC_6, KC_7, KC_8, KC_9, KC_A,
   KC_AMPR, KC_PIPE, LSFT(KC_T), KC_COMM, KC_SPC,   KC_1, KC_2, KC_3, KC_4, KC_5,
                     _______, _______, _______,    KC_0, _______, TG(_FUNC)
 ),
@@ -50,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_RAISE] = LAYOUT_split_3x5_3(
   KC_EXLM, KC_LCBR, KC_RCBR, KC_HASH, KC_PERC,     KC_CIRC, KC_AMPR, KC_ASTR, KC_PIPE, KC_DQUO,
   KC_TILD, KC_LBRC, KC_RBRC, KC_UNDS, KC_DLR,      KC_PLUS, KC_MINS, KC_LT, KC_GT, KC_QUOT,
-  KC_BSLS, KC_LPRN, KC_RPRN, KC_AMPR, KC_PIPE,     KC_EQL, KC_AT, KC_ESC, KC_SLSH, KC_GRV,
+  KC_BSLS, KC_LPRN, KC_RPRN, KC_AMPR, KC_PIPE,     KC_EQL, KC_AT, KC_ESC, KC_QUES, KC_GRV,
                     TG(_FUNC), _______, _______,    _______, _______, _______
 
 ),
@@ -63,8 +63,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 [_MODRIGHT] = LAYOUT_split_3x5_3(
-  _______,_______,_______,_______,_______,     XXXXXXX, KC_HOME, KC_PGUP, XXXXXXX, KC_ESC,
-  _______,_______,_______,_______,_______,     XXXXXXX, KC_END, KC_PGDN, XXXXXXX, KC_TAB,
+  _______,_______,_______,_______,_______,     KC_CAPS, KC_HOME, XXXXXXX, KC_PGUP, KC_ESC,
+  _______,_______,_______,_______,_______,     XXXXXXX, KC_END, XXXXXXX, KC_PGDN, KC_TAB,
   _______,_______,_______,_______,_______,     XXXXXXX, KC_RGUI, KC_RCTL, KC_RALT, KC_RSFT,
                   _______, TG(_NAV), KC_DEL,   KC_ENT, _______, _______
 ),

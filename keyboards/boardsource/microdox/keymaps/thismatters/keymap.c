@@ -26,6 +26,7 @@ enum layers {
     _MODRIGHT,// 4
     _NAV,     // 5
     _FUNC,    // 6
+    _AWESOME,
 };
 
 #define RAISE MO(_RAISE)
@@ -42,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_LOWER] = LAYOUT_split_3x5_3(
   KC_ENT, KC_PSLS, KC_PMNS, KC_COLN, KC_DEL,       KC_B, KC_C, KC_D, KC_E, KC_F,
-  KC_PERC, KC_ASTR, KC_PLUS, KC_PDOT, KC_PEQL,      KC_6, KC_7, KC_8, KC_9, KC_A,
+  KC_PERC, KC_ASTR, KC_PLUS, KC_DOT, KC_PEQL,      KC_6, KC_7, KC_8, KC_9, KC_A,
   KC_AMPR, KC_PIPE, LSFT(KC_T), KC_COMM, KC_SPC,   KC_1, KC_2, KC_3, KC_4, KC_5,
                     _______, _______, _______,    KC_0, _______, TG(_FUNC)
 ),
@@ -58,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_MODLEFT] = LAYOUT_split_3x5_3(
   KC_ESC, KC_PGUP, XXXXXXX, KC_HOME, KC_CAPS,      _______,_______,_______,_______,_______,
   KC_TAB, KC_PGDN, XXXXXXX, KC_END, XXXXXXX,       _______,_______,_______,_______,_______,
-  KC_LSFT, KC_LALT, KC_LCTL, KC_LGUI, XXXXXXX,     _______,_______,_______,_______,_______,
+  KC_LSFT, KC_LALT, KC_LCTL, KC_LGUI, LM(_AWESOME, MOD_LGUI),     _______,_______,_______,_______,_______,
                    _______,_______, KC_DEL,        KC_ENT, TG(_NAV), _______
 ),
 
@@ -71,8 +72,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_NAV] = LAYOUT_split_3x5_3(
   _______,_______,_______,_______,_______,     _______,_______,_______,_______,_______,
-  _______,_______,_______,_______,_______,     KC_LEFT, KC_DOWN, KC_UP, KC_RGHT,_______,
   _______,_______,_______,_______,_______,     _______,_______,_______,_______,_______,
+  _______,_______,_______,_______,_______,     KC_LEFT, KC_DOWN, KC_UP, KC_RGHT,_______,
                   _______,_______,_______,     _______,_______,_______
 
 ),
@@ -85,6 +86,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 ),
 
+[_AWESOME] = LAYOUT_split_3x5_3(
+  _______,_______,_______,_______,_______,     KC_1, KC_2, KC_3, KC_4, KC_5,
+  _______,_______,_______,_______,_______,     KC_H, KC_J, KC_K, KC_L, KC_6,
+  _______,_______,_______,_______,_______,     KC_9, LCTL(KC_J), LCTL(KC_K), KC_8, KC_7,
+                  _______,_______,_______,     _______,_______,_______
+  )
 };
 
 const rgblight_segment_t PROGMEM qwerty_layer[] = RGBLIGHT_LAYER_SEGMENTS(
@@ -101,6 +108,9 @@ const rgblight_segment_t PROGMEM modright_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 );
 const rgblight_segment_t PROGMEM modleft_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 6, HSV_RED}
+);
+const rgblight_segment_t PROGMEM awesome_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {6, 6, HSV_GOLD}
 );
 const rgblight_segment_t PROGMEM nav_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {7, 3, HSV_GREEN}
@@ -119,6 +129,7 @@ const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     raise_layer,
     func_layer,
     nav_layer,
+    awesome_layer,
     modleft_layer,
     modright_layer,
     capslock_layer
@@ -137,12 +148,13 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(2, layer_state_cmp(state, _RAISE));
     rgblight_set_layer_state(3, layer_state_cmp(state, _FUNC));
     rgblight_set_layer_state(4, layer_state_cmp(state, _NAV));
-    rgblight_set_layer_state(5, layer_state_cmp(state, _MODLEFT));
-    rgblight_set_layer_state(6, layer_state_cmp(state, _MODRIGHT));
+    rgblight_set_layer_state(5, layer_state_cmp(state, _AWESOME));
+    rgblight_set_layer_state(6, layer_state_cmp(state, _MODLEFT));
+    rgblight_set_layer_state(7, layer_state_cmp(state, _MODRIGHT));
     return state;
 }
 
 bool led_update_user(led_t led_state) {
-    rgblight_set_layer_state(7, led_state.caps_lock);
+    rgblight_set_layer_state(8, led_state.caps_lock);
     return true;
 }
